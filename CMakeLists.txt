@@ -52,7 +52,7 @@ if (imgui_ADDED)
 endif ()
 
 # SDL_image
-#set(SDLIMAGE_AVIF OFF CACHE BOOL "" FORCE) # Requires Perl and Nasm for libaom (AVIF image format)
+set(SDLIMAGE_AVIF OFF CACHE BOOL "" FORCE) # Requires Perl and Nasm for libaom (AVIF image format)
 CPMAddPackage("gh:libsdl-org/SDL_image#bcc97c0")
 list(APPEND LIBS SDL3_image::SDL3_image)
 
