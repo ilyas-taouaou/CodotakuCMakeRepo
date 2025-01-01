@@ -3,9 +3,6 @@ project(CodotakuCMakeRepo)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-add_executable(${PROJECT_NAME} main.cpp)
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
-
 # CPM
 file(
         DOWNLOAD
@@ -16,6 +13,7 @@ file(
 include(${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake)
 
 set(LIBS)
+
 
 ## Dependencies
 
@@ -64,4 +62,8 @@ list(APPEND LIBS flecs::flecs)
 CPMAddPackage("gh:SRombauts/SQLiteCpp#643b153")
 list(APPEND LIBS SQLiteCpp)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBS})
+
+## Executables
+add_executable(demo src/demo.cpp)
+target_compile_features(demo PRIVATE cxx_std_23)
+target_link_libraries(demo PRIVATE ${LIBS})
